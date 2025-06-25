@@ -567,7 +567,7 @@ TRAIN_0564,CC(c1ncc(s1)c2ccc(O)cc2)C(O)(Cn3cncn3)c4ccc(F)cc4F,92.9
 TRAIN_0565,Cc1ccc2Oc3ccc(Cl)cc3C=C(C#N)c2c1,0.0
 TRAIN_0566,CCOC(=O)c1c(C)nc2nc(SC)ncc2c1O,0.0
 TRAIN_0567,COc1cc(OC)nc(OC(C(C)C)C(=O)N2CCOCC2)n1,0.0
-TRAIN_0568,CNc1cc(Cl)cc(Cl)c1S(=O)(=O)N['']C(=O)O,0.0
+TRAIN_0568,CNc1cc(Cl)cc(Cl)c1S(=O)(=O)NCC(O)=O,0.0
 TRAIN_0569,CC(C)c1ccc2c(OC34OC(=O)NC23C(=O)c5ccccc45)c1,49.1
 TRAIN_0570,CC(=O)C1=C(NC2CCCc3ccccc23)Nc4c(cccc4c5ccccc5)C1=O,33.3
 TRAIN_0571,Oc1ccc2C(CC(=O)c2c1)c3cc(F)c(F)c(F)c3,19.5
