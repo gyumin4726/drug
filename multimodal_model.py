@@ -202,20 +202,32 @@ def train_model(model, train_loader, val_loader, device, num_epochs=10):
         correlation = np.corrcoef(all_preds, all_labels)[0, 1]
         rmse = np.sqrt(mean_squared_error(all_labels, all_preds))
         
+        # 모델 가중치 출력
+        weights = F.softmax(model.model_weights, dim=0)
         print(f'Epoch {epoch+1}/{num_epochs}:')
         print(f'Train Loss: {total_loss/len(train_loader):.4f}')
         print(f'Val Loss: {val_loss:.4f}')
         print(f'Correlation: {correlation:.4f}')
-        print(f'RMSE: {rmse:.4f}\n')
+        print(f'RMSE: {rmse:.4f}')
+        print(f'Model Weights - SMILES: {weights[0]:.3f}, Features: {weights[1]:.3f}, Fingerprint: {weights[2]:.3f}\n')
         
         if val_loss < best_val_loss:
             best_val_loss = val_loss
             best_metrics = {
                 'val_loss': val_loss,
                 'correlation': correlation,
-                'rmse': rmse
+                'rmse': rmse,
+                'weights': {
+                    'smiles': weights[0].item(),
+                    'features': weights[1].item(),
+                    'fingerprint': weights[2].item()
+                }
             }
-            torch.save(model.state_dict(), 'best_model.pth')
+            torch.save({
+                'model_state_dict': model.state_dict(),
+                'best_metrics': best_metrics,
+                'epoch': epoch
+            }, 'best_model.pth')
     
     return best_metrics
 
